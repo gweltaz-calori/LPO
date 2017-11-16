@@ -4,20 +4,39 @@
  */
 namespace Models;
 
-/*
- * Nichoir
+/**
+ * @ORM\Table(name="Nichoir")
+ * @ORM\Entity
  */
 class Nichoir {
-    /* @var int $id  */
+
+    /**
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     */
     private $id;
-/* @var string $nom  */
+    /**
+     * @ORM\Column(name="nom", type="string")
+     */
     private $nom;
-/* @var string $photo  */
+    /**
+     * @ORM\Column(name="photo", type="string")
+     */
     private $photo;
-/* @var DateTime $dateInstallation  */
+    /**
+     * @ORM\Column(name="dateInstallation", type="datetime")
+     */
     private $dateInstallation;
-/* @var object $geolocalisation  */
+
+    /**
+     * @ORM\OneToOne(targetEntity="Geolocalisation")
+     * @ORM\JoinColumn(name="idGeolocalisation", referencedColumnName="id")
+     */
     private $geolocalisation;
-/* @var object $adherent  */
+
+    /**
+     * @ORM\OneToOne(targetEntity="Adherent")
+     * @ORM\JoinColumn(name="idAdherent", referencedColumnName="id")
+     */
     private $adherent;
 }

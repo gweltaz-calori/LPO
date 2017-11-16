@@ -96,7 +96,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **postOiseau**
-> \Swagger\Client\Model\Oiseau postOiseau($etape)
+> \Swagger\Client\Model\Oiseau postOiseau($oiseau)
 
 Creates a oiseau resource.
 
@@ -106,10 +106,10 @@ Creates a oiseau resource.
 require_once(__DIR__ . '/vendor/autoload.php');
 
 $api_instance = new Swagger\Client\Api\OiseauxApi();
-$etape = new \Swagger\Client\Model\Oiseau(); // \Swagger\Client\Model\Oiseau | The new oiseau resource
+$oiseau = new \Swagger\Client\Model\Oiseau(); // \Swagger\Client\Model\Oiseau | The new oiseau resource
 
 try {
-    $result = $api_instance->postOiseau($etape);
+    $result = $api_instance->postOiseau($oiseau);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling OiseauxApi->postOiseau: ', $e->getMessage(), PHP_EOL;
@@ -121,7 +121,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **etape** | [**\Swagger\Client\Model\Oiseau**](../Model/Oiseau.md)| The new oiseau resource | [optional]
+ **oiseau** | [**\Swagger\Client\Model\Oiseau**](../Model/Oiseau.md)| The new oiseau resource | [optional]
 
 ### Return type
 

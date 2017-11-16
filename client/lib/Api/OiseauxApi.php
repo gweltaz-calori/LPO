@@ -252,13 +252,13 @@ class OiseauxApi
      *
      * Creates a oiseau resource.
      *
-     * @param \Swagger\Client\Model\Oiseau $etape The new oiseau resource (optional)
+     * @param \Swagger\Client\Model\Oiseau $oiseau The new oiseau resource (optional)
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @return \Swagger\Client\Model\Oiseau
      */
-    public function postOiseau($etape = null)
+    public function postOiseau($oiseau = null)
     {
-        list($response) = $this->postOiseauWithHttpInfo($etape);
+        list($response) = $this->postOiseauWithHttpInfo($oiseau);
         return $response;
     }
 
@@ -267,11 +267,11 @@ class OiseauxApi
      *
      * Creates a oiseau resource.
      *
-     * @param \Swagger\Client\Model\Oiseau $etape The new oiseau resource (optional)
+     * @param \Swagger\Client\Model\Oiseau $oiseau The new oiseau resource (optional)
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @return array of \Swagger\Client\Model\Oiseau, HTTP status code, HTTP response headers (array of strings)
      */
-    public function postOiseauWithHttpInfo($etape = null)
+    public function postOiseauWithHttpInfo($oiseau = null)
     {
         // parse inputs
         $resourcePath = "/oiseaux";
@@ -287,8 +287,8 @@ class OiseauxApi
 
         // body params
         $_tempBody = null;
-        if (isset($etape)) {
-            $_tempBody = $etape;
+        if (isset($oiseau)) {
+            $_tempBody = $oiseau;
         }
 
         // for model (json/xml)

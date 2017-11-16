@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **photo** | **string** |  | [optional] 
 **date_installation** | [**\DateTime**](\DateTime.md) |  | [optional] 
 **geolocalisation** | **object** |  | [optional] 
-**adherent** | **object** |  | [optional] 
+**adherent** | **int** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

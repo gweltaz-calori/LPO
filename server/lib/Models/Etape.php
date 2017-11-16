@@ -4,20 +4,38 @@
  */
 namespace Models;
 
-/*
- * Etape
+/**
+ * @ORM\Table(name="Etape")
+ * @ORM\Entity
  */
 class Etape {
-    /* @var int $id  */
+
+    /**
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     */
     private $id;
-/* @var DateTime $date  */
+    /**
+     * @ORM\Column(name="date", type="datetime")
+     */
     private $date;
-/* @var DateTime $heure  */
+    /**
+     * @ORM\Column(name="heure", type="datetime")
+     */
     private $heure;
-/* @var string $photo  */
+    /**
+     * @ORM\Column(name="photo", type="string")
+     */
     private $photo;
-/* @var string $commentaire  */
+    /**
+     * @ORM\Column(name="commentaire", type="string")
+     */
     private $commentaire;
-/* @var object $nichoir  */
+
+
+    /**
+     * @ORM\OneToOne(targetEntity="Nichoir")
+     * @ORM\JoinColumn(name="idNichoir", referencedColumnName="id")
+     */
     private $nichoir;
 }

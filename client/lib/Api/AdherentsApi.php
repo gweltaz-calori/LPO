@@ -155,6 +155,7 @@ class AdherentsApi
                 '\Swagger\Client\Model\Adherent',
                 '/adherents/{id}'
             );
+
             return [$this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\Adherent', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {

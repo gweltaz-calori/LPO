@@ -4,54 +4,58 @@
  */
 namespace Models;
 
-/*
- * Adherent
+/**
+ * @ORM\Table(name="Adherent")
+ * @ORM\Entity
  */
-class Adherent implements \JsonSerializable {
-    /* @var int $id  */
+class Adherent {
+
+    /**
+    * @ORM\Column(name="id", type="integer", nullable=false)
+    * @ORM\Id
+    */
     private $id;
-/* @var string $nom  */
+
+    /**
+    * @ORM\Column(name="nom", type="string")
+    */
     private $nom;
-/* @var string $prenom  */
+
+    /**
+    * @ORM\Column(name="prenom", type="string")
+    */
     private $prenom;
-/* @var string $login  */
+
+    /**
+    * @ORM\Column(name="login", type="string")
+    */
     private $login;
-/* @var string $password  */
+
+    /**
+    * @ORM\Column(name="password", type="string")
+    */
     private $password;
-/* @var string $telephone  */
+
+    /**
+    * @ORM\Column(name="telephone", type="string")
+    */
     private $telephone;
-/* @var string $mail  */
+
+    /**
+    * @ORM\Column(name="mail", type="string")
+    */
     private $mail;
-/* @var string $photo  */
+
+    /**
+    * @ORM\Column(name="photo", type="string")
+    */
     private $photo;
-/* @var object $adresse  */
+
+    /**
+     * @ORM\OneToOne(targetEntity="Adresse")
+     * @ORM\JoinColumn(name="idAdresse", referencedColumnName="id")
+     */
     private $adresse;
 
-    public function __construct()
-    {
 
-    }
-
-
-    /**
-     * @param string $nom
-     */
-    public function setNom(string $nom)
-    {
-        $this->nom = $nom;
-    }
-
-    /**
-     * Specify data which should be serialized to JSON
-     * @link http://php.net/manual/en/jsonserializable.jsonserialize.php
-     * @return mixed data which can be serialized by <b>json_encode</b>,
-     * which is a value of any type other than a resource.
-     * @since 5.4.0
-     */
-    public function jsonSerialize()
-    {
-        return [
-            "nom" => $this->nom
-        ];
-    }
 }

@@ -4,14 +4,23 @@
  */
 namespace Models;
 
-/*
- * Geolocalisation
+/**
+ * @ORM\Table(name="Geolocalisation")
+ * @ORM\Entity
  */
 class Geolocalisation {
-    /* @var int $id  */
+
+    /**
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     */
     private $id;
-/* @var Number $latitude  */
+    /**
+     * @ORM\Column(name="latitude", type="float")
+     */
     private $latitude;
-/* @var Number $longitude  */
+    /**
+     * @ORM\Column(name="longitude", type="float")
+     */
     private $longitude;
 }

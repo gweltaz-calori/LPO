@@ -60,7 +60,7 @@ class Nichoir implements ArrayAccess
         'photo' => 'string',
         'date_installation' => '\DateTime',
         'geolocalisation' => 'object',
-        'adherent' => 'object'
+        'adherent' => 'int'
     ];
 
     /**
@@ -298,7 +298,7 @@ class Nichoir implements ArrayAccess
 
     /**
      * Gets adherent
-     * @return object
+     * @return int
      */
     public function getAdherent()
     {
@@ -307,7 +307,7 @@ class Nichoir implements ArrayAccess
 
     /**
      * Sets adherent
-     * @param object $adherent
+     * @param int $adherent
      * @return $this
      */
     public function setAdherent($adherent)

@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **heure** | [**\DateTime**](\DateTime.md) |  | [optional] 
 **photo** | **string** |  | [optional] 
 **commentaire** | **string** |  | [optional] 
-**nichoir** | **object** |  | [optional] 
+**nichoir** | **int** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

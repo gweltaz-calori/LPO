@@ -60,7 +60,7 @@ class Etape implements ArrayAccess
         'heure' => '\DateTime',
         'photo' => 'string',
         'commentaire' => 'string',
-        'nichoir' => 'object'
+        'nichoir' => 'int'
     ];
 
     /**
@@ -298,7 +298,7 @@ class Etape implements ArrayAccess
 
     /**
      * Gets nichoir
-     * @return object
+     * @return int
      */
     public function getNichoir()
     {
@@ -307,7 +307,7 @@ class Etape implements ArrayAccess
 
     /**
      * Sets nichoir
-     * @param object $nichoir
+     * @param int $nichoir
      * @return $this
      */
     public function setNichoir($nichoir)

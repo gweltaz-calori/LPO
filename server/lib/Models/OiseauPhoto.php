@@ -4,14 +4,25 @@
  */
 namespace Models;
 
-/*
- * OiseauPhoto
+/**
+ * @ORM\Table(name="OiseauPhoto")
+ * @ORM\Entity
  */
 class OiseauPhoto {
-    /* @var int $id  */
+
+    /**
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     */
     private $id;
-/* @var string $url  */
+    /**
+     * @ORM\Column(name="url", type="string")
+     */
     private $url;
-/* @var object $oiseau  */
+
+    /**
+     * @ORM\OneToOne(targetEntity="Oiseau")
+     * @ORM\JoinColumn(name="idOiseau", referencedColumnName="id")
+     */
     private $oiseau;
 }

@@ -4,20 +4,34 @@
  */
 namespace Models;
 
-/*
- * Oiseau
+/**
+ * @ORM\Table(name="Oiseau")
+ * @ORM\Entity
  */
 class Oiseau {
-    /* @var int $id  */
+
+    /**
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     */
     private $id;
-/* @var string $nom  */
+    /**
+     * @ORM\Column(name="nom", type="string")
+     */
     private $nom;
-/* @var string $famille  */
+    /**
+     * @ORM\Column(name="famille", type="string")
+     */
     private $famille;
-/* @var string $description  */
+
+    /**
+     * @ORM\Column(name="description", type="string")
+     */
     private $description;
-/* @var object $nichoir  */
+
+    /**
+     * @ORM\OneToOne(targetEntity="Nichoir")
+     * @ORM\JoinColumn(name="idNichoir", referencedColumnName="id")
+     */
     private $nichoir;
-/* @var \\Models\OiseauPhoto[] $photos  */
-    private $photos;
 }

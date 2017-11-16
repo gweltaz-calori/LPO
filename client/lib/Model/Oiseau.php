@@ -59,8 +59,7 @@ class Oiseau implements ArrayAccess
         'nom' => 'string',
         'famille' => 'string',
         'description' => 'string',
-        'nichoir' => 'object',
-        'photos' => '\Swagger\Client\Model\OiseauPhoto[]'
+        'nichoir' => 'int'
     ];
 
     /**
@@ -72,8 +71,7 @@ class Oiseau implements ArrayAccess
         'nom' => null,
         'famille' => null,
         'description' => null,
-        'nichoir' => null,
-        'photos' => null
+        'nichoir' => null
     ];
 
     public static function swaggerTypes()
@@ -95,8 +93,7 @@ class Oiseau implements ArrayAccess
         'nom' => 'nom',
         'famille' => 'famille',
         'description' => 'description',
-        'nichoir' => 'nichoir',
-        'photos' => 'photos'
+        'nichoir' => 'nichoir'
     ];
 
 
@@ -109,8 +106,7 @@ class Oiseau implements ArrayAccess
         'nom' => 'setNom',
         'famille' => 'setFamille',
         'description' => 'setDescription',
-        'nichoir' => 'setNichoir',
-        'photos' => 'setPhotos'
+        'nichoir' => 'setNichoir'
     ];
 
 
@@ -123,8 +119,7 @@ class Oiseau implements ArrayAccess
         'nom' => 'getNom',
         'famille' => 'getFamille',
         'description' => 'getDescription',
-        'nichoir' => 'getNichoir',
-        'photos' => 'getPhotos'
+        'nichoir' => 'getNichoir'
     ];
 
     public static function attributeMap()
@@ -163,7 +158,6 @@ class Oiseau implements ArrayAccess
         $this->container['famille'] = isset($data['famille']) ? $data['famille'] : null;
         $this->container['description'] = isset($data['description']) ? $data['description'] : null;
         $this->container['nichoir'] = isset($data['nichoir']) ? $data['nichoir'] : null;
-        $this->container['photos'] = isset($data['photos']) ? $data['photos'] : null;
     }
 
     /**
@@ -277,7 +271,7 @@ class Oiseau implements ArrayAccess
 
     /**
      * Gets nichoir
-     * @return object
+     * @return int
      */
     public function getNichoir()
     {
@@ -286,33 +280,12 @@ class Oiseau implements ArrayAccess
 
     /**
      * Sets nichoir
-     * @param object $nichoir
+     * @param int $nichoir
      * @return $this
      */
     public function setNichoir($nichoir)
     {
         $this->container['nichoir'] = $nichoir;
-
-        return $this;
-    }
-
-    /**
-     * Gets photos
-     * @return \Swagger\Client\Model\OiseauPhoto[]
-     */
-    public function getPhotos()
-    {
-        return $this->container['photos'];
-    }
-
-    /**
-     * Sets photos
-     * @param \Swagger\Client\Model\OiseauPhoto[] $photos
-     * @return $this
-     */
-    public function setPhotos($photos)
-    {
-        $this->container['photos'] = $photos;
 
         return $this;
     }

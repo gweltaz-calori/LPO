@@ -8,7 +8,7 @@ Method | HTTP request | Description
 
 
 # **postOiseauPhoto**
-> \Swagger\Client\Model\OiseauPhoto postOiseauPhoto($etape)
+> \Swagger\Client\Model\OiseauPhoto postOiseauPhoto($oiseau_photo)
 
 Creates a oiseauPhoto resource.
 
@@ -18,10 +18,10 @@ Creates a oiseauPhoto resource.
 require_once(__DIR__ . '/vendor/autoload.php');
 
 $api_instance = new Swagger\Client\Api\OiseauPhotoApi();
-$etape = new \Swagger\Client\Model\OiseauPhoto(); // \Swagger\Client\Model\OiseauPhoto | The new oiseauPhoto resource
+$oiseau_photo = new \Swagger\Client\Model\OiseauPhoto(); // \Swagger\Client\Model\OiseauPhoto | The new oiseauPhoto resource
 
 try {
-    $result = $api_instance->postOiseauPhoto($etape);
+    $result = $api_instance->postOiseauPhoto($oiseau_photo);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling OiseauPhotoApi->postOiseauPhoto: ', $e->getMessage(), PHP_EOL;
@@ -33,7 +33,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **etape** | [**\Swagger\Client\Model\OiseauPhoto**](../Model/OiseauPhoto.md)| The new oiseauPhoto resource | [optional]
+ **oiseau_photo** | [**\Swagger\Client\Model\OiseauPhoto**](../Model/OiseauPhoto.md)| The new oiseauPhoto resource | [optional]
 
 ### Return type
 

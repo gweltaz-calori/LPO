@@ -4,16 +4,26 @@
  */
 namespace Models;
 
-/*
- * Adresse
+/**
+ * @ORM\Table(name="Adresse")
+ * @ORM\Entity
  */
 class Adresse {
-    /* @var int $id  */
+
+    /**
+    * @ORM\Column(name="id", type="integer", nullable=false)
+    */
     private $id;
-/* @var string $rue  */
+    /**
+     * @ORM\Column(name="rue", type="string")
+     */
     private $rue;
-/* @var string $ville  */
+    /**
+     * @ORM\Column(name="ville", type="string")
+     */
     private $ville;
-/* @var string $cp  */
+    /**
+     * @ORM\Column(name="cp", type="string")
+     */
     private $cp;
 }

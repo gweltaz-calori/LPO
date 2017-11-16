@@ -92,13 +92,13 @@ class OiseauPhotoApi
      *
      * Creates a oiseauPhoto resource.
      *
-     * @param \Swagger\Client\Model\OiseauPhoto $etape The new oiseauPhoto resource (optional)
+     * @param \Swagger\Client\Model\OiseauPhoto $oiseau_photo The new oiseauPhoto resource (optional)
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @return \Swagger\Client\Model\OiseauPhoto
      */
-    public function postOiseauPhoto($etape = null)
+    public function postOiseauPhoto($oiseau_photo = null)
     {
-        list($response) = $this->postOiseauPhotoWithHttpInfo($etape);
+        list($response) = $this->postOiseauPhotoWithHttpInfo($oiseau_photo);
         return $response;
     }
 
@@ -107,11 +107,11 @@ class OiseauPhotoApi
      *
      * Creates a oiseauPhoto resource.
      *
-     * @param \Swagger\Client\Model\OiseauPhoto $etape The new oiseauPhoto resource (optional)
+     * @param \Swagger\Client\Model\OiseauPhoto $oiseau_photo The new oiseauPhoto resource (optional)
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @return array of \Swagger\Client\Model\OiseauPhoto, HTTP status code, HTTP response headers (array of strings)
      */
-    public function postOiseauPhotoWithHttpInfo($etape = null)
+    public function postOiseauPhotoWithHttpInfo($oiseau_photo = null)
     {
         // parse inputs
         $resourcePath = "/oiseauPhoto";
@@ -127,8 +127,8 @@ class OiseauPhotoApi
 
         // body params
         $_tempBody = null;
-        if (isset($etape)) {
-            $_tempBody = $etape;
+        if (isset($oiseau_photo)) {
+            $_tempBody = $oiseau_photo;
         }
 
         // for model (json/xml)

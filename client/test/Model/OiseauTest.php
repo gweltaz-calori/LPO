@@ -111,11 +111,4 @@ class OiseauTest extends \PHPUnit_Framework_TestCase
     public function testPropertyNichoir()
     {
     }
-
-    /**
-     * Test attribute "photos"
-     */
-    public function testPropertyPhotos()
-    {
-    }
 }
