@@ -3,7 +3,7 @@
  * Oiseau
  */
 namespace Models;
-
+use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Table(name="Oiseau")
  * @ORM\Entity
@@ -13,6 +13,7 @@ class Oiseau {
     /**
      * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
     /**

@@ -3,7 +3,7 @@
  * Adresse
  */
 namespace Models;
-
+use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Table(name="Adresse")
  * @ORM\Entity
@@ -12,6 +12,8 @@ class Adresse {
 
     /**
     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
     */
     private $id;
     /**
