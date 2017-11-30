@@ -6,8 +6,16 @@
 
 require_once __DIR__ . '/vendor/autoload.php';
 
-$app = new Slim\App();
+$configuration = [
+    'settings' => [
+        'displayErrorDetails' => true,
+    ],
+];
+$c = new \Slim\Container($configuration);
+$app = new \Slim\App($c);
 
+
+$entityManager = require_once __DIR__ . '/bootstrap.php';
 
 /**
  * GET getAdherent
@@ -15,11 +23,11 @@ $app = new Slim\App();
  * Notes:
  * Output-Formats: [application/json]
  */
-$app->GET('/adherents/{id}', function ($request, $response, $args) {
+$app->GET('/adherents/{id}', function ($request, $response, $args) use ($entityManager) {
 
-
-    $response->write("hey");
-    return $response;
+    $userRepo = $entityManager->getRepository('Models\Adherent');
+    $adherent = $userRepo->find($args['id']);
+    return $response->withJson($adherent);
 });
 
 
@@ -29,12 +37,21 @@ $app->GET('/adherents/{id}', function ($request, $response, $args) {
  * Notes:
  * Output-Formats: [application/json]
  */
-$app->POST('/etapes', function ($request, $response, $args) {
+$app->POST('/etapes', function ($request, $response, $args) use ($entityManager){
 
 
     $body = $request->getParsedBody();
-    $response->write('How about implementing postEtape as a POST method ?');
-    return $response;
+    $etape = new \Models\Etape();
+    $etape->setCommentaire($body['commentaire']);
+    $etape->setDate($body['date']);
+    $etape->setHeure($body['heure']);
+    $etape->setNichoir($body['nichoir']);
+    $etape->setPhoto($body['photo']);
+
+    $entityManager->persist($etape);
+    $entityManager->flush();
+
+    return $response->withJson($etape);
 });
 
 
@@ -44,11 +61,16 @@ $app->POST('/etapes', function ($request, $response, $args) {
  * Notes:
  * Output-Formats: [application/json]
  */
-$app->DELETE('/nichoirs/{id}', function ($request, $response, $args) {
+$app->DELETE('/nichoirs/{id}', function ($request, $response, $args) use ($entityManager){
 
 
-    $response->write('How about implementing deleteNichoir as a DELETE method ?');
-    return $response;
+    $nichoirRepo = $entityManager->getRepository('Models\Nichoir');
+    $nichoir = $nichoirRepo->find($args['id']);
+
+    $entityManager->remove($nichoir);
+    $entityManager->flush();
+
+    return $response->write('removed');
 });
 
 
@@ -58,11 +80,12 @@ $app->DELETE('/nichoirs/{id}', function ($request, $response, $args) {
  * Notes:
  * Output-Formats: [application/json]
  */
-$app->GET('/nichoirs', function ($request, $response, $args) {
+$app->GET('/nichoirs', function ($request, $response, $args) use ($entityManager){
 
 
-    $response->write('How about implementing getAllNichoir as a GET method ?');
-    return $response;
+    $nichoirRepo = $entityManager->getRepository('Models\Nichoir');
+    $nichoirs = $nichoirRepo->findAll();
+    return $response->withJson($nichoirs);
 });
 
 
@@ -72,11 +95,20 @@ $app->GET('/nichoirs', function ($request, $response, $args) {
  * Notes:
  * Output-Formats: [application/json]
  */
-$app->POST('/nichoirs', function ($request, $response, $args) {
-
+$app->POST('/nichoirs', function ($request, $response, $args) use ($entityManager){
 
     $body = $request->getParsedBody();
-    $response->write('How about implementing postNichoir as a POST method ?');
+    $nichoir = new \Models\Nichoir();
+    $nichoir->setNom($body['nom']);
+    $nichoir->setAdherent($body['adherent']);
+    $nichoir->setDateInstallation($body['dateInstallation']);
+    $nichoir->setGeolocalisation($body['geoLocalisation']);
+
+    $entityManager->persist($nichoir);
+    $entityManager->flush();
+
+
+    $response->withJson($nichoir);
     return $response;
 });
 
@@ -87,11 +119,18 @@ $app->POST('/nichoirs', function ($request, $response, $args) {
  * Notes:
  * Output-Formats: [application/json]
  */
-$app->POST('/oiseauPhoto', function ($request, $response, $args) {
-
+$app->POST('/oiseauPhoto', function ($request, $response, $args) use ($entityManager){
 
     $body = $request->getParsedBody();
-    $response->write('How about implementing postOiseauPhoto as a POST method ?');
+    $oiseauPhoto = new \Models\OiseauPhoto();
+    $oiseauPhoto->setOiseau($body['oiseau']);
+    $oiseauPhoto->setUrl($body['url']);
+
+    $entityManager->persist($oiseauPhoto);
+    $entityManager->flush();
+
+
+    $response->withJson($oiseauPhoto);
     return $response;
 });
 
@@ -102,11 +141,17 @@ $app->POST('/oiseauPhoto', function ($request, $response, $args) {
  * Notes:
  * Output-Formats: [application/json]
  */
-$app->DELETE('/oiseaux/{id}', function ($request, $response, $args) {
+$app->DELETE('/oiseaux/{id}', function ($request, $response, $args) use ($entityManager){
 
 
-    $response->write('How about implementing deleteOiseau as a DELETE method ?');
-    return $response;
+    $oiseauRepo = $entityManager->getRepository('Models\Oiseau');
+    $oiseau = $oiseauRepo->find($args['id']);
+
+    $entityManager->remove($oiseau);
+    $entityManager->flush();
+
+    return $response->write('removed');
+
 });
 
 
@@ -116,11 +161,13 @@ $app->DELETE('/oiseaux/{id}', function ($request, $response, $args) {
  * Notes:
  * Output-Formats: [application/json]
  */
-$app->GET('/oiseaux/{id}', function ($request, $response, $args) {
+$app->GET('/oiseaux/{id}', function ($request, $response, $args) use ($entityManager){
 
 
-    $response->write('How about implementing getOiseau as a GET method ?');
-    return $response;
+    $oiseauRepo = $entityManager->getRepository('Models\Oiseau');
+    $oiseau = $oiseauRepo->find($args['id']);
+    return $response->withJson($oiseau);
+
 });
 
 
@@ -130,11 +177,21 @@ $app->GET('/oiseaux/{id}', function ($request, $response, $args) {
  * Notes:
  * Output-Formats: [application/json]
  */
-$app->POST('/oiseaux', function ($request, $response, $args) {
+$app->POST('/oiseaux', function ($request, $response, $args) use ($entityManager) {
 
 
     $body = $request->getParsedBody();
-    $response->write('How about implementing postOiseau as a POST method ?');
+    $oiseau = new \Models\Oiseau();
+    $oiseau->setNichoir($body['nichoir']);
+    $oiseau->setNom($body['nom']);
+    $oiseau->setDescription($body['description']);
+    $oiseau->setFamille($body['famille']);
+
+    $entityManager->persist($oiseau);
+    $entityManager->flush();
+
+
+    $response->withJson($oiseau);
     return $response;
 });
 
@@ -145,13 +202,24 @@ $app->POST('/oiseaux', function ($request, $response, $args) {
  * Notes:
  * Output-Formats: [application/json]
  */
-$app->PUT('/oiseaux/{id}', function ($request, $response, $args) {
+$app->PUT('/oiseaux/{id}', function ($request, $response, $args) use ($entityManager){
 
+    $oiseauRepo = $entityManager->getRepository('Models\Oiseau');
+    $oiseau = $oiseauRepo->find($args['id']);
 
     $body = $request->getParsedBody();
-    $response->write('How about implementing putOiseau as a PUT method ?');
+    $oiseau->setNichoir($body['nichoir']);
+    $oiseau->setNom($body['nom']);
+    $oiseau->setDescription($body['description']);
+    $oiseau->setFamille($body['famille']);
+
+    $entityManager->persist($oiseau);
+    $entityManager->flush();
+
+
+    $response->withJson($oiseau);
     return $response;
-});
+}); //TODO
 
 
 $app->run();

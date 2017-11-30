@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="Adherent")
  * @ORM\Entity
  */
-class Adherent {
+class Adherent implements \JsonSerializable {
 
     /**
     * @ORM\Column(name="id", type="integer", nullable=false)
@@ -261,5 +261,19 @@ class Adherent {
     public function getAdresse()
     {
         return $this->adresse;
+    }
+
+    /**
+     * Specify data which should be serialized to JSON
+     * @link http://php.net/manual/en/jsonserializable.jsonserialize.php
+     * @return mixed data which can be serialized by <b>json_encode</b>,
+     * which is a value of any type other than a resource.
+     * @since 5.4.0
+     */
+    public function jsonSerialize()
+    {
+        return [
+            "nom" => $this->nom
+        ];
     }
 }
