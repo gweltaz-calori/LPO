@@ -49,9 +49,9 @@ $app->GET('/nichoirs', function ($request, $response, $args) use ($nichoirContro
 
 });
 
-$app->GET('/ah', function ($request, $response, $args) {
+$app->GET('/', function ($request, $response, $args) {
 
-    return $response->write("test");
+    return $response->write("<h1>Home</h1> ");
 });
 $app->run();
 
