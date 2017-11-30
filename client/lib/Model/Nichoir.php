@@ -59,8 +59,8 @@ class Nichoir implements ArrayAccess
         'nom' => 'string',
         'photo' => 'string',
         'date_installation' => '\DateTime',
-        'geolocalisation' => 'object',
-        'adherent' => 'int'
+        'geolocalisation' => '\Swagger\Client\Model\Geolocalisation',
+        'adherent' => '\Swagger\Client\Model\Adherent'
     ];
 
     /**
@@ -277,7 +277,7 @@ class Nichoir implements ArrayAccess
 
     /**
      * Gets geolocalisation
-     * @return object
+     * @return \Swagger\Client\Model\Geolocalisation
      */
     public function getGeolocalisation()
     {
@@ -286,7 +286,7 @@ class Nichoir implements ArrayAccess
 
     /**
      * Sets geolocalisation
-     * @param object $geolocalisation
+     * @param \Swagger\Client\Model\Geolocalisation $geolocalisation
      * @return $this
      */
     public function setGeolocalisation($geolocalisation)
@@ -298,7 +298,7 @@ class Nichoir implements ArrayAccess
 
     /**
      * Gets adherent
-     * @return int
+     * @return \Swagger\Client\Model\Adherent
      */
     public function getAdherent()
     {
@@ -307,7 +307,7 @@ class Nichoir implements ArrayAccess
 
     /**
      * Sets adherent
-     * @param int $adherent
+     * @param \Swagger\Client\Model\Adherent $adherent
      * @return $this
      */
     public function setAdherent($adherent)

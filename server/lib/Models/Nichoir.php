@@ -242,7 +242,7 @@ class Nichoir implements \JsonSerializable {
             "id" => $this->id,
             "nom" => $this->nom,
             "photo" => $this->photo,
-            "dateInstallation" => $this->dateInstallation,
+            "dateInstallation" => $this->dateInstallation->format('Y-m-d H:i'),
             "geolocalisation" => $this->geolocalisation,
             "adherent" => $this->adherent,
             "etapes" => $this->etapes

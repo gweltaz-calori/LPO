@@ -63,7 +63,7 @@ class Adherent implements ArrayAccess
         'telephone' => 'string',
         'mail' => 'string',
         'photo' => 'string',
-        'adresse' => 'object'
+        'adresse' => '\Swagger\Client\Model\Adresse'
     ];
 
     /**
@@ -379,7 +379,7 @@ class Adherent implements ArrayAccess
 
     /**
      * Gets adresse
-     * @return object
+     * @return \Swagger\Client\Model\Adresse
      */
     public function getAdresse()
     {
@@ -388,7 +388,7 @@ class Adherent implements ArrayAccess
 
     /**
      * Sets adresse
-     * @param object $adresse
+     * @param \Swagger\Client\Model\Adresse $adresse
      * @return $this
      */
     public function setAdresse($adresse)

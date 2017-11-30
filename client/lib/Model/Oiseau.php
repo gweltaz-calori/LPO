@@ -59,7 +59,7 @@ class Oiseau implements ArrayAccess
         'nom' => 'string',
         'famille' => 'string',
         'description' => 'string',
-        'nichoir' => 'int'
+        'nichoir' => '\Swagger\Client\Model\Nichoir'
     ];
 
     /**
@@ -271,7 +271,7 @@ class Oiseau implements ArrayAccess
 
     /**
      * Gets nichoir
-     * @return int
+     * @return \Swagger\Client\Model\Nichoir
      */
     public function getNichoir()
     {
@@ -280,7 +280,7 @@ class Oiseau implements ArrayAccess
 
     /**
      * Sets nichoir
-     * @param int $nichoir
+     * @param \Swagger\Client\Model\Nichoir $nichoir
      * @return $this
      */
     public function setNichoir($nichoir)

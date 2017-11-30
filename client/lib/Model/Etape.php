@@ -60,7 +60,7 @@ class Etape implements ArrayAccess
         'heure' => '\DateTime',
         'photo' => 'string',
         'commentaire' => 'string',
-        'nichoir' => 'int'
+        'nichoir' => '\Swagger\Client\Model\Nichoir'
     ];
 
     /**
@@ -298,7 +298,7 @@ class Etape implements ArrayAccess
 
     /**
      * Gets nichoir
-     * @return int
+     * @return \Swagger\Client\Model\Nichoir
      */
     public function getNichoir()
     {
@@ -307,7 +307,7 @@ class Etape implements ArrayAccess
 
     /**
      * Sets nichoir
-     * @param int $nichoir
+     * @param \Swagger\Client\Model\Nichoir $nichoir
      * @return $this
      */
     public function setNichoir($nichoir)

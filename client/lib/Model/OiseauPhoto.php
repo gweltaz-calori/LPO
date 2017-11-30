@@ -57,7 +57,7 @@ class OiseauPhoto implements ArrayAccess
     protected static $swaggerTypes = [
         'id' => 'int',
         'url' => 'string',
-        'oiseau' => 'int'
+        'oiseau' => '\Swagger\Client\Model\Oiseau'
     ];
 
     /**
@@ -217,7 +217,7 @@ class OiseauPhoto implements ArrayAccess
 
     /**
      * Gets oiseau
-     * @return int
+     * @return \Swagger\Client\Model\Oiseau
      */
     public function getOiseau()
     {
@@ -226,7 +226,7 @@ class OiseauPhoto implements ArrayAccess
 
     /**
      * Sets oiseau
-     * @param int $oiseau
+     * @param \Swagger\Client\Model\Oiseau $oiseau
      * @return $this
      */
     public function setOiseau($oiseau)
