@@ -13,11 +13,12 @@ $useSimpleAnnotationReader = false;
 // Connexion à la base de données
 $dbParams = [
     'driver' => 'pdo_mysql', // le sgbd
-    'host' => 'localhost', // l’adresse ip du serveur bdd
+    'host' => '127.0.0.1', // l’adresse ip du serveur bdd
     'charset' => 'utf8',
     'user' => 'root', // login d’accés
-    'password' => '', // mdp
+    'password' => 'root', // mdp
     'dbname' => 'lpo', // nom BDD
+    'port' => 8889
 ];
 
 $config = Setup::createAnnotationMetadataConfiguration(
