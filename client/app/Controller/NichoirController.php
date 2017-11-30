@@ -6,16 +6,16 @@
  * Time: 15:22
  */
 
-namespace Swagger\Client\controler;
+namespace Swagger\App\Controller;
 
-class controleurNichoir extends controleur
+class NichoirController extends Controller
 {
     public function indexAction()
     {
         $api_instance = new \Swagger\Client\Api\NichoirsApi();
         try {
             $result = $api_instance->getAllNichoir();
-            echo $this->twig->render('/indexFront/index.html.twig',array('Nichoirs' => $result));
+            echo $this->twig->render('/indexFront/index.html.twig',array('nichoirs' => $result));
         } catch (Exception $e) {
             echo 'Exception when calling NichoirsApi->getAllNichoir: ', $e->getMessage(), PHP_EOL;
         }

@@ -249,6 +249,7 @@ class ObjectSerializer
             settype($data, 'array');
             return $data;
         } elseif ($class === '\DateTime') {
+
             // Some API's return an invalid, empty string as a
             // date-time property. DateTime::__construct() will return
             // the current time for empty input which is probably not
@@ -256,7 +257,9 @@ class ObjectSerializer
             // be interpreted as a missing field/value. Let's handle
             // this graceful.
             if (!empty($data)) {
-                return new \DateTime($data);
+
+                return new \DateTime($data->date);
+
             } else {
                 return null;
             }

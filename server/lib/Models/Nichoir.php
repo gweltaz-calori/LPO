@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="Nichoir")
  * @ORM\Entity
  */
-class Nichoir {
+class Nichoir implements \JsonSerializable {
 
     /**
      * @ORM\Column(name="id", type="integer", nullable=false)
@@ -36,10 +36,12 @@ class Nichoir {
     private $geolocalisation;
 
     /**
-     * @ORM\OneToOne(targetEntity="Adherent")
+     * @ORM\ManyToOne(targetEntity="Adherent")
      * @ORM\JoinColumn(name="idAdherent", referencedColumnName="id")
      */
     private $adherent;
+
+
 
     /**
      * @ORM\OneToMany(targetEntity="Etape",mappedBy="idNichoir")
@@ -225,5 +227,25 @@ class Nichoir {
     public function getEtapes()
     {
         return $this->etapes;
+    }
+
+    /**
+     * Specify data which should be serialized to JSON
+     * @link http://php.net/manual/en/jsonserializable.jsonserialize.php
+     * @return mixed data which can be serialized by <b>json_encode</b>,
+     * which is a value of any type other than a resource.
+     * @since 5.4.0
+     */
+    public function jsonSerialize()
+    {
+        return [
+            "id" => $this->id,
+            "nom" => $this->nom,
+            "photo" => $this->photo,
+            "dateInstallation" => $this->dateInstallation,
+            "geolocalisation" => $this->geolocalisation,
+            "adherent" => $this->adherent,
+            "etapes" => $this->etapes
+        ];
     }
 }

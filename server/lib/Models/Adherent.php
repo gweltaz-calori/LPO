@@ -60,6 +60,11 @@ class Adherent implements \JsonSerializable {
     private $adresse;
 
 
+    /**
+     * @ORM\OneToMany(targetEntity="Nichoir", mappedBy="adherent")
+     */
+    private $nichoirs;
+
 
     /**
      * Get id
@@ -273,7 +278,15 @@ class Adherent implements \JsonSerializable {
     public function jsonSerialize()
     {
         return [
-            "nom" => $this->nom
+            "id" => $this->id,
+            "nom" => $this->nom,
+            "prenom" => $this->prenom,
+            "login" => $this->login,
+            "telephone" => $this->telephone,
+            "mail" => $this->mail,
+            "photo" => $this->photo,
+            "adresse" => $this->adresse,
+            "nichoirs" => $this->nichoirs
         ];
     }
 }

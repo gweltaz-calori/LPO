@@ -3,8 +3,11 @@
 require_once( './autoload.php');
 require_once "./vendor/autoload.php";
 
-$thecontroler = new \Swagger\Client\controler\controleurNichoir();
-$thecontroler->indexAction();
+
+
+
+$nichoirController = new \Swagger\App\Controller\NichoirController();
+
 
 /*
 require_once( './autoload.php');
@@ -40,9 +43,9 @@ $configuration = [
 $c = new \Slim\Container($configuration);
 $app = new \Slim\App($c);
 
-$app->GET('/nichoirs', function ($request, $response, $args) {
+$app->GET('/nichoirs', function ($request, $response, $args) use ($nichoirController) {
 
-    return $response->write("ok");
+    $nichoirController->indexAction();
 
 });
 
