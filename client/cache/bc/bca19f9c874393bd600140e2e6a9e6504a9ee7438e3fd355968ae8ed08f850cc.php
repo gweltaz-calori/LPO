@@ -1,6 +1,6 @@
 <?php
 
-/* /indexFront/index.html.twig */
+/* /nichoirs/index.html.twig */
 class __TwigTemplate_3ea13c7765c626f8799c26550dbddd22055a97b6fa3bbfc35fda01fb1429ca99 extends Twig_Template
 {
     public function __construct(Twig_Environment $env)
@@ -36,7 +36,7 @@ class __TwigTemplate_3ea13c7765c626f8799c26550dbddd22055a97b6fa3bbfc35fda01fb142
 
     public function getTemplateName()
     {
-        return "/indexFront/index.html.twig";
+        return "/nichoirs/index.html.twig";
     }
 
     public function isTraitable()
@@ -51,6 +51,6 @@ class __TwigTemplate_3ea13c7765c626f8799c26550dbddd22055a97b6fa3bbfc35fda01fb142
 
     public function getSourceContext()
     {
-        return new Twig_Source("", "/indexFront/index.html.twig", "C:\\Users\\gcalori\\Documents\\LPO\\client\\app\\templates\\indexFront\\index.html.twig");
+        return new Twig_Source("", "/nichoirs/index.html.twig", "C:\\Users\\gcalori\\Documents\\LPO\\client\\app\\templates\\nichoirs\\index.html.twig");
     }
 }

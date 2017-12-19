@@ -7,31 +7,7 @@ require_once "./vendor/autoload.php";
 
 
 $nichoirController = new \Swagger\App\Controller\NichoirController();
-
-
-/*
-require_once( './autoload.php');
-require_once __DIR__ . '/vendor/autoload.php';
-
-
-/*$api_instance = new Swagger\Client\Api\AdherentsApi();
-$id = 56; // int |
-=======
-$api_instance = new Swagger\Client\Api\AdherentsApi();
-$id = 1; // int |
-
-
-try {
-    $test = new Swagger\Client\Api\NichoirsApi();
-    $test->getAllNichoir();
-    $result = $api_instance->getAdherent($id);
-
-
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling AdherentsApi->getAdherent: ', $e->getMessage(), PHP_EOL;
-}*/
-/*echo "ag";*/
+$adherentController = new \Swagger\App\Controller\AdherentController();
 
 
 
@@ -49,10 +25,16 @@ $app->GET('/nichoirs', function ($request, $response, $args) use ($nichoirContro
 
 });
 
-$app->GET('/', function ($request, $response, $args) {
+$app->GET('/', function ($request, $response, $args) use ($adherentController) {
 
-    return $response->write("<h1>Home</h1> ");
+    $adherentController->indexAction();
 });
+
+$app->POST('/login', function ($request, $response, $args) use ($adherentController) {
+
+    $adherentController->loginAction($request,$response);
+});
+
 $app->run();
 
 

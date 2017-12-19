@@ -2,7 +2,7 @@
 
 ``` bash
 cd client
-composer install // ou composer update
+composer install // ou php composer.phar install
 php -S localhost:8081
 ```
 
@@ -10,6 +10,6 @@ php -S localhost:8081
 
 ``` bash
 cd server
-composer install // ou composer update
+composer install // ou php composer.phar install
 php -S localhost:8082
 ```

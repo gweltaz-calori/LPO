@@ -1,0 +1,9 @@
+{% extends 'base/base.html.twig' %}
+
+{% block body %}
+
+    {% for nichoir in nichoirs %}
+        <h1>{{ nichoir.nom }}</h1>
+    {% endfor %}
+
+{% endblock %}

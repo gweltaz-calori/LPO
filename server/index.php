@@ -31,6 +31,16 @@ $app->GET('/adherents/{id}', function ($request, $response, $args) use ($entityM
 });
 
 
+$app->POST('/adherents', function ($request, $response, $args) use ($entityManager) {
+
+    $body = $request->getParsedBody();
+    $userRepo = $entityManager->getRepository('Models\Adherent');
+    $adherent = $userRepo->findBy([login =>  $body['login'],password =>  $body['password']]);
+
+    return $response->withJson($adherent);
+});
+
+
 /**
  * POST postEtape
  * Summary: Creates a etape resource.
