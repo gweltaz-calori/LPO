@@ -11,7 +11,7 @@ $proxyDir = null;
 $cache = null;
 $useSimpleAnnotationReader = false;
 // Connexion à la base de données
-/*$dbParams = [
+$dbParams = [
     'driver' => 'pdo_mysql', // le sgbd
     'host' => '127.0.0.1', // l’adresse ip du serveur bdd
     'charset' => 'utf8',
@@ -19,8 +19,8 @@ $useSimpleAnnotationReader = false;
     'password' => 'root', // mdp
     'dbname' => 'lpo', // nom BDD
     'port' => 8889
-];*/
-
+];
+/*
 $dbParams = [
     'driver' => 'pdo_mysql', // le sgbd
     'host' => '127.0.0.1', // l’adresse ip du serveur bdd
@@ -28,7 +28,7 @@ $dbParams = [
     'user' => 'root', // login d’accés
     'password' => '', // mdp
     'dbname' => 'lpo', // nom BDD
-];
+];*/
 
 $config = Setup::createAnnotationMetadataConfiguration(
     $entitiesPath,

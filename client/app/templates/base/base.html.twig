@@ -2,16 +2,29 @@
 <html>
 <head>
     <meta charset="utf-8" />
+    <link rel="stylesheet" href="/web/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Barlow" rel="stylesheet">
     <title>LPO</title>
 </head>
 <body>
 
-    {% block header %}
+{% block header %}
 
-    {% endblock %}
+{% endblock %}
 
-    {% block body %}
+{% block body %}
 
-    {% endblock %}
+{% endblock %}
+
+
+<script>
+    var info = document.querySelector('.info');
+    document.querySelector('.nom').addEventListener('mouseover', function () {
+        info.style.opacity = '1';
+    });
+    document.querySelector('.user').addEventListener('mouseleave', function () {
+        info.style.opacity = '0';
+    });
+</script>
 </body>
 </html>
