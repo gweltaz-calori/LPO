@@ -29,7 +29,7 @@ class Adherent implements \JsonSerializable {
     private $prenom;
 
     /**
-    * @ORM\Column(name="login", type="string")
+    * @ORM\Column(name="login", type="string",unique=true)
     */
     private $login;
 
