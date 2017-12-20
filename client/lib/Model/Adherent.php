@@ -63,7 +63,8 @@ class Adherent implements ArrayAccess
         'telephone' => 'string',
         'mail' => 'string',
         'photo' => 'string',
-        'adresse' => '\Swagger\Client\Model\Adresse'
+        'adresse' => '\Swagger\Client\Model\Adresse',
+        'nichoirs' => '\Swagger\Client\Model\Nichoir[]',
     ];
 
     /**
@@ -79,7 +80,8 @@ class Adherent implements ArrayAccess
         'telephone' => null,
         'mail' => null,
         'photo' => null,
-        'adresse' => null
+        'adresse' => null,
+        'nichoirs' => null
     ];
 
     public static function swaggerTypes()
@@ -105,7 +107,8 @@ class Adherent implements ArrayAccess
         'telephone' => 'telephone',
         'mail' => 'mail',
         'photo' => 'photo',
-        'adresse' => 'adresse'
+        'adresse' => 'adresse',
+        'nichoirs' => 'nichoirs',
     ];
 
 
@@ -122,7 +125,8 @@ class Adherent implements ArrayAccess
         'telephone' => 'setTelephone',
         'mail' => 'setMail',
         'photo' => 'setPhoto',
-        'adresse' => 'setAdresse'
+        'adresse' => 'setAdresse',
+        'nichoirs' => 'setNichoirs',
     ];
 
 
@@ -139,7 +143,8 @@ class Adherent implements ArrayAccess
         'telephone' => 'getTelephone',
         'mail' => 'getMail',
         'photo' => 'getPhoto',
-        'adresse' => 'getAdresse'
+        'adresse' => 'getAdresse',
+        'nichoirs' => 'getNichoirs',
     ];
 
     public static function attributeMap()
@@ -182,6 +187,7 @@ class Adherent implements ArrayAccess
         $this->container['mail'] = isset($data['mail']) ? $data['mail'] : null;
         $this->container['photo'] = isset($data['photo']) ? $data['photo'] : null;
         $this->container['adresse'] = isset($data['adresse']) ? $data['adresse'] : null;
+        $this->container['nichoirs'] = isset($data['nichoirs']) ? $data['nichoirs'] : null;
     }
 
     /**
@@ -397,6 +403,29 @@ class Adherent implements ArrayAccess
 
         return $this;
     }
+
+
+    /**
+     * Gets nichoirs
+     * @return \Swagger\Client\Model\Nichoir[]
+     */
+    public function getNichoirs()
+    {
+        return $this->container['nichoirs'];
+    }
+
+    /**
+     * Sets nichoirs
+     * @param \Swagger\Client\Model\Nichoir[] $nichoirs
+     * @return $this
+     */
+    public function setNichoirs($nichoirs)
+    {
+        $this->container['nichoirs'] = $nichoirs;
+
+        return $this;
+    }
+
     /**
      * Returns true if offset exists. False otherwise.
      * @param  integer $offset Offset

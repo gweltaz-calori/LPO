@@ -110,6 +110,7 @@ class AdherentsApi
     }
 
     public function getAdherentByLoginWithHttpInfo($login,$password) {
+        // parse inputs
         $resourcePath = "/adherents";
         $httpBody = '';
         $queryParams = [];
@@ -119,20 +120,19 @@ class AdherentsApi
         if (!is_null($_header_accept)) {
             $headerParams['Accept'] = $_header_accept;
         }
-        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType([]);
+        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json']);
 
-        if (isset($_tempBody)) {
-            $httpBody = $_tempBody; // $_tempBody is the method argument, if present
-        } elseif (count($formParams) > 0) {
-            $httpBody = $formParams; // for HTTP post (form)
-        }
+
         // make the API Call
         try {
             list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
                 $resourcePath,
                 'POST',
                 $queryParams,
-                $httpBody,
+                [
+                    "login" => $login,
+                    "password" => $password
+                ],
                 $headerParams,
                 '\Swagger\Client\Model\Adherent',
                 '/adherents'
@@ -140,7 +140,9 @@ class AdherentsApi
 
             return [$this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\Adherent', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
+
             switch ($e->getCode()) {
+
                 case 200:
                     $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\Adherent', $e->getResponseHeaders());
                     $e->setResponseObject($data);
@@ -185,7 +187,11 @@ class AdherentsApi
                 $this->apiClient->getSerializer()->toPathValue($id),
                 $resourcePath
             );
+
+
         }
+
+
 
         // for model (json/xml)
         if (isset($_tempBody)) {
@@ -204,10 +210,11 @@ class AdherentsApi
                 '\Swagger\Client\Model\Adherent',
                 '/adherents/{id}'
             );
-
             return [$this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\Adherent', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
+
             switch ($e->getCode()) {
+
                 case 200:
                     $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\Adherent', $e->getResponseHeaders());
                     $e->setResponseObject($data);

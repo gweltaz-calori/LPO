@@ -36,7 +36,7 @@ class Nichoir implements \JsonSerializable {
     private $geolocalisation;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Adherent")
+     * @ORM\ManyToOne(targetEntity="Adherent",inversedBy="nichoirs")
      * @ORM\JoinColumn(name="idAdherent", referencedColumnName="id")
      */
     private $adherent;
@@ -244,7 +244,6 @@ class Nichoir implements \JsonSerializable {
             "photo" => $this->photo,
             "dateInstallation" => $this->dateInstallation->format('Y-m-d H:i'),
             "geolocalisation" => $this->geolocalisation,
-            "adherent" => $this->adherent,
             "etapes" => $this->etapes
         ];
     }

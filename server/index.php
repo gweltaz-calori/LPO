@@ -5,6 +5,9 @@
  */
 
 require_once __DIR__ . '/vendor/autoload.php';
+use Doctrine\Common\DataFixtures\Executor\ORMExecutor;
+use Doctrine\Common\DataFixtures\Purger\ORMPurger;
+use Doctrine\Common\DataFixtures\Loader;
 
 $configuration = [
     'settings' => [
@@ -17,6 +20,14 @@ $app = new \Slim\App($c);
 
 $entityManager = require_once __DIR__ . '/bootstrap.php';
 
+$loader = new Loader();
+
+
+$loader->loadFromDirectory('./lib/DataFixtures');
+$purger = new ORMPurger();
+$executor = new ORMExecutor($entityManager, $purger);
+$executor->execute($loader->getFixtures(),true);
+
 /**
  * GET getAdherent
  * Summary: Retrieves a Adherent resource.
@@ -27,6 +38,7 @@ $app->GET('/adherents/{id}', function ($request, $response, $args) use ($entityM
 
     $userRepo = $entityManager->getRepository('Models\Adherent');
     $adherent = $userRepo->find($args['id']);
+
     return $response->withJson($adherent);
 });
 
@@ -35,7 +47,7 @@ $app->POST('/adherents', function ($request, $response, $args) use ($entityManag
 
     $body = $request->getParsedBody();
     $userRepo = $entityManager->getRepository('Models\Adherent');
-    $adherent = $userRepo->findBy([login =>  $body['login'],password =>  $body['password']]);
+    $adherent = $userRepo->findOneBy(["login" =>  $body['login'],"password" =>  $body['password']]);
 
     return $response->withJson($adherent);
 });

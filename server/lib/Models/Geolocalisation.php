@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="Geolocalisation")
  * @ORM\Entity
  */
-class Geolocalisation {
+class Geolocalisation implements \JsonSerializable {
 
     /**
      * @ORM\Column(name="id", type="integer", nullable=false)
@@ -81,5 +81,14 @@ class Geolocalisation {
     public function getLongitude()
     {
         return $this->longitude;
+    }
+
+    public function jsonSerialize()
+    {
+        return [
+            "id" => $this->id,
+            "latitude" => $this->latitude,
+            "longitude" => $this->longitude
+        ];
     }
 }

@@ -54,7 +54,7 @@ class Adherent implements \JsonSerializable {
     private $photo;
 
     /**
-     * @ORM\OneToOne(targetEntity="Adresse")
+     * @ORM\OneToOne(targetEntity="Adresse",cascade={"persist"})
      * @ORM\JoinColumn(name="idAdresse", referencedColumnName="id")
      */
     private $adresse;
@@ -64,6 +64,8 @@ class Adherent implements \JsonSerializable {
      * @ORM\OneToMany(targetEntity="Nichoir", mappedBy="adherent")
      */
     private $nichoirs;
+
+
 
 
     /**
@@ -277,6 +279,12 @@ class Adherent implements \JsonSerializable {
      */
     public function jsonSerialize()
     {
+
+        $newNichoirs = [];
+        foreach ($this->nichoirs as $nichoir) {
+            $newNichoirs[] = $nichoir->jsonSerialize();
+        }
+
         return [
             "id" => $this->id,
             "nom" => $this->nom,
@@ -286,7 +294,7 @@ class Adherent implements \JsonSerializable {
             "mail" => $this->mail,
             "photo" => $this->photo,
             "adresse" => $this->adresse,
-            "nichoirs" => $this->nichoirs
+            "nichoirs" => $newNichoirs
         ];
     }
 }

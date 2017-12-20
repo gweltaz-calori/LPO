@@ -22,10 +22,24 @@ class AdherentController extends Controller
 
         $api_instance = new \Swagger\Client\Api\AdherentsApi();
         try {
-            $result = $api_instance->getAdherentByLoginAndPassword($login,$password);
-            echo $this->twig->render('/adherent/index.html.twig',["adherent" => $result]);
+            $user = $api_instance->getAdherentByLoginAndPassword($login,$password);
+            if(!isset($_SESSION['user'])) {
+                $_SESSION['user'] = $user;
+            }
+
+
+            return $response->withRedirect('/nichoirs');
         } catch (Exception $e) {
             echo 'Exception when calling NichoirsApi->getAllNichoir: ', $e->getMessage(), PHP_EOL;
         }
+    }
+
+    public function logoutAction($request,$response) {
+        if(isset($_SESSION['user'])) {
+            session_start();
+            session_destroy();
+        }
+
+        return $response->withRedirect('/');
     }
 }
