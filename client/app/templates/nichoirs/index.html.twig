@@ -1,22 +1,7 @@
 {% extends 'base/user.html.twig' %}
 
 
-{% block header %}
-    <header>
-        <a href="/logout" class="logout">logout</a>
-        <div class="lpo_logo"></div>
-        <div class="user">
-            <div class="photo" style="background-image: url('{{ user.photo }}')"></div>
-            <div class="nom">{{ user.nom }} {{ user.prenom }}</div>
-            <div class="info">
-                <span>login : {{ user.login }}</span><br><br>
-                <span>Mail : {{ user.mail }}</span><br><br>
-                <span>Tel : {{ user.telephone }}</span><br><br>
-                <span>Adresse : {{ user.adresse.rue }} {{ user.adresse.ville }} {{ user.adresse.cp }}</span>
-            </div>
-        </div>
-    </header>
-{% endblock %}
+
 
 {% block body %}
 
@@ -24,15 +9,15 @@
     <!-- TODO
     ajouter un nichoir
     -->
-    <a href="/nichoirs" class="ajouter">Ajouter</a>
+    <a href="/createNichoir" class="ajouter">Ajouter un nichoir</a>
     Mes nichoirs</h1>
     <div class="container_nichoirs">
-    {% for nichoir in user.nichoirs %}
+    {% for nichoir in nichoirs %}
         <div class="card" style="border: solid black 1px;">
             <!-- TODO
             supprimer le nichoir
             -->
-            <a href="/nichoirs/{{nichoir.id}}" class="cross">X</a>
+            <form class="delete" method="post" action="/deleteNichoir/{{ nichoir.id }}"><button type="submit" class="cross">X</button></form>
             <div class="photo_nichoir" style="background-image: url('{{nichoir.photo}}')"></div>
             <h1 class="nom_nichoir">{{ nichoir.nom }}</h1>
             <h2 class="date_nichoir">Date d'installation : {{ nichoir.date_installation | date("m/d/Y") }}</h2>

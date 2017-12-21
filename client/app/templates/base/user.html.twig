@@ -4,5 +4,29 @@
     <header>
         <a href="/logout" class="logout">logout</a>
         <div class="lpo_logo"></div>
+        <div class="user">
+            <div class="photo" style="background-image: url('{{ user.photo }}')"></div>
+            <div class="nom">{{ user.nom }} {{ user.prenom }}</div>
+            <div class="info">
+                <span>login : {{ user.login }}</span><br><br>
+                <span>Mail : {{ user.mail }}</span><br><br>
+                <span>Tel : {{ user.telephone }}</span><br><br>
+                <span>Adresse : {{ user.adresse.rue }} {{ user.adresse.ville }} {{ user.adresse.cp }}</span>
+            </div>
+        </div>
     </header>
+{% endblock %}
+
+{% block script %}
+
+<script>
+    var info = document.querySelector('.info');
+    document.querySelector('.nom').addEventListener('mouseover', function () {
+        info.style.opacity = '1';
+    });
+    document.querySelector('.user').addEventListener('mouseleave', function () {
+        info.style.opacity = '0';
+    });
+</script>
+
 {% endblock %}

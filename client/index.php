@@ -27,6 +27,27 @@ $app->GET('/nichoirs', function ($request, $response, $args) use ($nichoirContro
 
 });
 
+$app->GET('/createNichoir', function ($request, $response, $args) use ($nichoirController) {
+    if(!isset($_SESSION['user'])) {
+        return $response->withRedirect('/');
+    }
+    $nichoirController->createAction();
+
+});
+
+$app->POST('/createNichoir', function ($request, $response, $args) use ($nichoirController) {
+    if(isset($_SESSION['user'])) {
+        return $nichoirController->createActionForm($request,$response);
+    }
+});
+
+
+$app->POST('/deleteNichoir/{id}', function ($request, $response, $args) use ($nichoirController) {
+    if(isset($_SESSION['user'])) {
+        return $nichoirController->deleteAction($response,$args['id']);
+    }
+});
+
 
 $app->GET('/', function ($request, $response, $args) use ($adherentController) {
 

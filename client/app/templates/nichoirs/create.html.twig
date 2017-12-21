@@ -1,0 +1,24 @@
+{% extends 'base/user.html.twig' %}
+
+{% block body %}
+
+
+
+    <h1 class="mes_nichoirs">
+        <!-- TODO
+        ajouter un nichoir
+        -->
+        <a href="/nichoirs" class="ajouter">Mes nichoirs</a>
+        Créer un nichoir</h1>
+    <div class="container_nichoirs">
+        <form method="post" action="/createNichoir">
+            <input type="text" required name="nom" placeholder="nom (string)">
+            <input type="text" required name="photo" placeholder="Url photo (string)">
+            <input type="number" required name="latitude" placeholder="latitude (chiffre)">
+            <input type="number" required name="longitude" placeholder="longitude (chiffre)">
+            <button type="submit">Créer</button>
+        </form>
+
+    </div>
+
+{% endblock %}

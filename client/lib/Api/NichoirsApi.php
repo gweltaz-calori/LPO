@@ -297,6 +297,8 @@ class NichoirsApi
                 '/nichoirs'
             );
 
+            /*var_dump(json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($httpBody)));*/
+
             return [$this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\Nichoir', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {

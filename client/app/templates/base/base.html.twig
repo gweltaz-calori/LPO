@@ -17,14 +17,8 @@
 {% endblock %}
 
 
-<script>
-    var info = document.querySelector('.info');
-    document.querySelector('.nom').addEventListener('mouseover', function () {
-        info.style.opacity = '1';
-    });
-    document.querySelector('.user').addEventListener('mouseleave', function () {
-        info.style.opacity = '0';
-    });
-</script>
+{% block script %}
+
+{% endblock %}
 </body>
 </html>

@@ -32,6 +32,7 @@ class LoadAdherentData implements FixtureInterface
             $adresse->setRue('4 rue de ah');
             $adresse->setVille('Paris');
 
+
             $adherent->setAdresse($adresse);
             $adherent->setPassword('polo');
             $adherent->setPhoto('http://static4.businessinsider.com/image/57ae527ddb5ce9b2008b6935/paul-szoldra.jpg');

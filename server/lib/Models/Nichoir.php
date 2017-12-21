@@ -30,7 +30,7 @@ class Nichoir implements \JsonSerializable {
     private $dateInstallation;
 
     /**
-     * @ORM\OneToOne(targetEntity="Geolocalisation")
+     * @ORM\OneToOne(targetEntity="Geolocalisation",cascade={"persist"})
      * @ORM\JoinColumn(name="idGeolocalisation", referencedColumnName="id")
      */
     private $geolocalisation;
@@ -238,13 +238,17 @@ class Nichoir implements \JsonSerializable {
      */
     public function jsonSerialize()
     {
+        if(!$this->dateInstallation)
+            $this->dateInstallation = new \DateTime();
+
         return [
             "id" => $this->id,
             "nom" => $this->nom,
             "photo" => $this->photo,
             "dateInstallation" => $this->dateInstallation->format('Y-m-d H:i'),
             "geolocalisation" => $this->geolocalisation,
-            "etapes" => $this->etapes
+            "etapes" => $this->etapes,
+
         ];
     }
 }

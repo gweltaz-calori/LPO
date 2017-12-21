@@ -119,19 +119,31 @@ $app->GET('/nichoirs', function ($request, $response, $args) use ($entityManager
  */
 $app->POST('/nichoirs', function ($request, $response, $args) use ($entityManager){
 
+    $adherentRepo = $entityManager->getRepository('Models\Adherent');
+
     $body = $request->getParsedBody();
     $nichoir = new \Models\Nichoir();
     $nichoir->setNom($body['nom']);
-    $nichoir->setAdherent($body['adherent']);
-    $nichoir->setDateInstallation($body['dateInstallation']);
-    $nichoir->setGeolocalisation($body['geoLocalisation']);
+
+    $adherent = $adherentRepo->find($body['adherent']['id']);
+    $nichoir->setAdherent($adherent);
+    $nichoir->setDateInstallation(new \DateTime());
+    $nichoir->setPhoto($body['photo']);
+
+    $geo = new \Models\Geolocalisation();
+    $geo->setLatitude($body['geolocalisation']['latitude']);
+    $geo->setLongitude($body['geolocalisation']['longitude']);
+
+    $nichoir->setGeolocalisation($geo);
+
+
 
     $entityManager->persist($nichoir);
     $entityManager->flush();
 
 
-    $response->withJson($nichoir);
-    return $response;
+
+    return $response->withJson($nichoir);
 });
 
 
